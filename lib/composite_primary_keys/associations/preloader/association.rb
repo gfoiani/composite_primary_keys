@@ -41,8 +41,10 @@ module ActiveRecord
 
               records = load_slices sliced
               records.each do |record, owner_key|
-                owners_map[owner_key].each do |owner|
-                  records_by_owner[owner] << record
+                if owners_map[owner_key]
+                  owners_map[owner_key].each do |owner|
+                    records_by_owner[owner] << record
+                  end
                 end
               end
             end
